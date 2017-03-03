@@ -1,0 +1,34 @@
+general:
+    artifacts:
+        - /home/ubuntu/YourApplicationName/app/build/outputs/apk/
+
+machine:
+    java:
+        version: oraclejdk8
+    environment:
+        ANDROID_HOME: /usr/local/android-sdk-linux
+
+
+dependencies:
+    pre:
+        - echo y | android update sdk --no-ui --all --filter tools,platform-tools,android-25
+        - echo y | android update sdk --no-ui --all --filter build-tools-25.0.2
+
+test:
+    pre:
+        - emulator -avd circleci-android24 -no-window:
+            background: true
+            parallel: true
+
+    override:
+        - ./gradlew assembleDebug
+        - circle-android wait-for-boot
+        # This sleep should avoid the com.android.builder.testing.api.DeviceException: com.android.ddmlib.ShellCommandUnresponsiveException
+        - sleep 30
+        - adb shell input keyevent 82
+        - ./gradlew createDebugCoverageReport
+        - ./gradlew test
+    post:
+        - cp -r app/build/outputs/apk $CIRCLE_ARTIFACTS
+        - cp -r app/build/reports/coverage $CIRCLE_ARTIFACTS
+        - cp -r collapsing-toolbar-plus/build/reports $CIRCLE_ARTIFACTS
