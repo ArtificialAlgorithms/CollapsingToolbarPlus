@@ -16,7 +16,9 @@ dependencies:
 
 test:
     override:
-        - ./gradlew assembleDebug && ./gradlew test
+        - ./gradlew createMockDebugCoverageReport
+        - ./gradlew assembleDebug
+        - ./gradlew test
     post:
         - cp -r app/build/outputs $CIRCLE_ARTIFACTS
         - cp -r collapsing-toolbar-plus/build/reports $CIRCLE_ARTIFACTS
