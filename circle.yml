@@ -11,20 +11,24 @@ machine:
 
 dependencies:
     pre:
-        - echo y | android update sdk --no-ui --all --filter tools,platform-tools,extra-google-m2repository,extra-google-google_play_services,extra-android-support,extra-android-m2repository,android-25
+        - echo y | android update sdk --no-ui --all --filter tools,platform-tools,android-25
         - echo y | android update sdk --no-ui --all --filter build-tools-25.0.2
 
 test:
     pre:
-        - emulator -avd circleci-android24 -no-window:
+        - emulator -avd circleci-android24 -no-audio -no-window:
             background: true
             parallel: true
         - circle-android wait-for-boot
         - adb shell input keyevent 82
 
     override:
-        - ./gradlew createDebugCoverageReport
         - ./gradlew assembleDebug
+        - circle-android wait-for-boot
+        # This sleep should avoid the com.android.builder.testing.api.DeviceException: com.android.ddmlib.ShellCommandUnresponsiveException
+        - sleep 30
+        - adb shell input keyevent 82
+        - ./gradlew createDebugCoverageReport
         - ./gradlew test
     post:
         - cp -r app/build/outputs $CIRCLE_ARTIFACTS
