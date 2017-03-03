@@ -16,23 +16,14 @@ dependencies:
 
 test:
     pre:
-        - android list targets
-        - android create avd -n emulatorwithgoogleapi25 -t 12 --tag google_apis
-        - echo 'vm.heapSize=512' >> ~/.android/avd/emulatorwithgoogleapi25.ini
-        - echo 'hw.ramSize=1024' >> ~/.android/avd/emulatorwithgoogleapi25.ini
-        - cat ~/.android/avd/emulatorwithgoogleapi25.ini
-        - emulator -avd emulatorwithgoogleapi22 -no-audio -no-window :
+        - emulator -avd circleci-android24 -no-window:
             background: true
             parallel: true
         - circle-android wait-for-boot
         - adb shell input keyevent 82
-        - adb shell svc power stayon true
-        - adb shell settings put global window_animation_scale 0
-        - adb shell settings put global transition_animation_scale 0
-        - adb shell settings put global animator_duration_scale 0
 
     override:
-        - ./gradlew createMockDebugCoverageReport
+        - ./gradlew createDebugCoverageReport
         - ./gradlew assembleDebug
         - ./gradlew test
     post:
