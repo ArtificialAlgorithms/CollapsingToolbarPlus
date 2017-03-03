@@ -1,6 +1,6 @@
 general:
     artifacts:
-        - /home/ubuntu/YourApplicationName/app/build/outputs/apk/
+        - /home/ubuntu/CollapsingToolbarPlus/app/build/outputs/apk/
 
 machine:
     java:
