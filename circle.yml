@@ -18,3 +18,4 @@ test:
     override:
         - ./gradlew assembleDebug && ./gradlew test
         - cp -r app/build/outputs $CIRCLE_ARTIFACTS
+        - cp -r collapsing-toolbar-plus/build/reports $CIRCLE_ARTIFACTS
