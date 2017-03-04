@@ -41,6 +41,6 @@ public class ExampleInstrumentedTest {
     // Context of the app under test.
     Context appContext = InstrumentationRegistry.getTargetContext();
 
-    assertEquals("com.artificialalgorithms.collapsingtoolbarplus", appContext.getPackageName());
+    assertEquals("com.etherealbytes.collapsingtoolbarplus", appContext.getPackageName());
   }
 }
