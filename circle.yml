@@ -30,5 +30,5 @@ test:
         - ./gradlew test
     post:
         - cp -r app/build/outputs/apk $CIRCLE_ARTIFACTS
-        - cp -r app/build/reports/coverage $CIRCLE_ARTIFACTS
-        - cp -r collapsing-toolbar-plus/build/reports $CIRCLE_ARTIFACTS
+        - cp -r collapsing-toolbar-plus/build/reports/coverage $CIRCLE_ARTIFACTS
+        - cp -r collapsing-toolbar-plus/build/reports/tests $CIRCLE_ARTIFACTS
