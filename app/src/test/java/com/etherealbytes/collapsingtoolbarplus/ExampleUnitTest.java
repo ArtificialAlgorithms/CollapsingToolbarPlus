@@ -1,4 +1,4 @@
-package com.artificialalgorithms.collapsingtoolbarplus;
+package com.etherealbytes.collapsingtoolbarplus;
 
 import org.junit.Test;
 

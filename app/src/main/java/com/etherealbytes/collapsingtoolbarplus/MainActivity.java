@@ -1,4 +1,4 @@
-package com.artificialalgorithms.collapsingtoolbarplus;
+package com.etherealbytes.collapsingtoolbarplus;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

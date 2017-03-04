@@ -1,4 +1,4 @@
-package com.artificialalgorithms.collapsingtoolbarplus;
+package com.etherealbytes.collapsingtoolbarplus;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

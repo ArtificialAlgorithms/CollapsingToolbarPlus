@@ -30,7 +30,7 @@ android {
 
 archivesBaseName = "collapsing-toolbar-plus"
 
-group = "com.artificialalgorithms"
+group = "com.etherealbytes"
 version = "1.0.1"
 
 
@@ -43,7 +43,7 @@ bintray {
     pkg {
         repo = 'maven'
         name = 'collapsing-toolbar-plus'
-        userOrg = 'artificialalgorithms'
+        userOrg = 'etherealbytes'
         licenses = ['Apache-2.0']
         vcsUrl = 'https://github.com/bintray/gradle-bintray-plugin.git'
         version {
